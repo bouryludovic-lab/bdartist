@@ -205,6 +205,13 @@ html,body{height:100%;overflow:hidden;background:#0d0d0d}
 .ci-val{font-family:var(--C);font-size:17px;font-weight:300;color:#555;margin:3px 0}
 .ci-sub{font-family:var(--J);font-size:10px;color:#2a2a2a;margin-top:6px}
 .legal-txt{font-family:var(--J);font-size:9.5px;color:#2a2a2a;text-align:center;padding:1.25rem 2.5rem;line-height:1.9;background:var(--bg)}
+
+.cta-card-link{transition:background .2s,border-color .2s}
+.cta-card-link:hover{background:#1e1e1e;border-color:#444}
+.cta-arrow{font-family:var(--J);font-size:14px;color:#555;margin-top:.75rem}
+.cta-card-link:hover .cta-arrow{color:#999}
+.ci-link{transition:color .2s}
+.ci-link:hover{color:#aaa !important}
 </style>
 </head>
 <body>
@@ -516,7 +523,7 @@ html,body{height:100%;overflow:hidden;background:#0d0d0d}
           <div class="partner-icon"><svg width="16" height="16" viewBox="0 0 20 20"><polygon points="10,2 18,17 2,17" fill="#888"/></svg></div>
           <div>
             <p class="partner-n">Art In Move</p>
-            <p class="partner-d">Spécialiste du leasing d'œuvres d'art — Accompagnement complet du montage financier, constitution du dossier, suivi administratif, gestion du registre spécial. Contact : artinmove.fr</p>
+            <p class="partner-d">Spécialiste du leasing d'œuvres d'art — Accompagnement complet du montage financier, constitution du dossier, suivi administratif, gestion du registre spécial. Site : <a href="https://artinmove.com/" target="_blank" style="color:#888;text-decoration:underline;text-underline-offset:3px">artinmove.com</a></p>
           </div>
         </div>
       </div>
@@ -606,9 +613,9 @@ html,body{height:100%;overflow:hidden;background:#0d0d0d}
         <h2 class="contact-h">Prêt à franchir<br><em>le pas ?</em></h2>
         <p class="contact-sub">Investissez dans l'art · Optimisez votre fiscalité · Sublimez vos espaces</p>
         <div class="cta-row">
-          <div class="cta-card"><p class="cta-n">Découvrir</p><p class="cta-wh">Les œuvres disponibles</p><p class="cta-d">Catalogue exclusif de sculptures en acier et matériaux nobles, toutes en édition limitée.</p></div>
-          <div class="cta-card"><p class="cta-n">Contacter</p><p class="cta-wh">Benjamin Duclos</p><p class="cta-d">Rendez-vous personnalisé pour trouver l'œuvre qui correspond à votre projet.</p></div>
-          <div class="cta-card"><p class="cta-n">Simuler</p><p class="cta-wh">Votre avantage fiscal</p><p class="cta-d">Calculez votre économie d'impôt personnalisée en quelques secondes avec notre outil.</p></div>
+          <a href="https://benjaminduclos.com/fr/sculptures-haut-de-gamme-benjamin-duclos" target="_blank" style="text-decoration:none"><div class="cta-card cta-card-link"><p class="cta-n">Découvrir</p><p class="cta-wh">Les œuvres disponibles</p><p class="cta-d">Catalogue exclusif de sculptures en acier et matériaux nobles, toutes en édition limitée.</p><p class="cta-arrow">→</p></div></a>
+          <a href="mailto:bdartist@ets-duclos.fr" style="text-decoration:none"><div class="cta-card cta-card-link"><p class="cta-n">Contacter</p><p class="cta-wh">Benjamin Duclos</p><p class="cta-d">Rendez-vous personnalisé pour trouver l'œuvre qui correspond à votre projet.</p><p class="cta-arrow">→</p></div></a>
+          <div class="cta-card cta-card-link" onclick="goSim()" style="cursor:pointer"><p class="cta-n">Simuler</p><p class="cta-wh">Votre avantage fiscal</p><p class="cta-d">Calculez votre économie d'impôt personnalisée en quelques secondes avec notre outil.</p><p class="cta-arrow">→</p></div>
         </div>
       </div>
       <div class="urgency">
@@ -619,8 +626,8 @@ html,body{height:100%;overflow:hidden;background:#0d0d0d}
       </div>
       <div class="contact-info">
         <p class="ci-name">BD Artist</p>
-        <p class="ci-val">www.benjaminduclos.com</p>
-        <p class="ci-val">contact@benjaminduclos.com</p>
+        <a href="https://benjaminduclos.com/fr/bd-artist-benjamin-duclos-redirection" target="_blank" style="text-decoration:none"><p class="ci-val ci-link">benjaminduclos.com</p></a>
+        <a href="mailto:bdartist@ets-duclos.fr" style="text-decoration:none"><p class="ci-val ci-link">bdartist@ets-duclos.fr</p></a>
         <p class="ci-sub">France · Disponible pour déplacements</p>
       </div>
       <p class="legal-txt">Document non contractuel, à titre informatif uniquement. Consultez votre expert-comptable ou conseiller fiscal pour une analyse personnalisée de votre situation.<br>Art In Move — Partenaire Leasing d'Art &nbsp;·&nbsp; BD Artist © 2025 — Tous droits réservés</p>
@@ -630,6 +637,12 @@ html,body{height:100%;overflow:hidden;background:#0d0d0d}
 </div>
 
 <script>
+
+function goSim(){
+  var btn = document.querySelector('.sb-item[onclick*="sim"]');
+  show('sim', btn);
+}
+
 function show(id,btn){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('visible')});
   document.querySelectorAll('.sb-item').forEach(function(b){b.classList.remove('active')});
