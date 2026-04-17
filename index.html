@@ -7,136 +7,209 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden}
-:root{--C:'Cormorant Garamond',Georgia,serif;--J:'Jost',sans-serif;--ink:#111;--ink2:#555;--ink3:#999;--border:#e0e0e0;--bg:#fff;--bg2:#f7f7f7}
-.shell{display:flex;height:100vh;overflow:hidden;background:#fff;font-family:var(--J)}
-.sidebar{width:180px;flex-shrink:0;background:#0d0d0d;display:flex;flex-direction:column;align-items:center;padding:2rem 0 1.5rem;overflow:hidden}
+html,body{height:100%;overflow:hidden;background:#0d0d0d}
+:root{
+  --C:'Cormorant Garamond',Georgia,serif;
+  --J:'Jost',sans-serif;
+  --bg:#0d0d0d;
+  --bg2:#141414;
+  --bg3:#1a1a1a;
+  --bg4:#222;
+  --ink:#f0f0f0;
+  --ink2:#aaa;
+  --ink3:#666;
+  --border:#2a2a2a;
+  --border2:#333;
+}
+.shell{display:flex;height:100vh;overflow:hidden;background:var(--bg);font-family:var(--J)}
+
+/* SIDEBAR */
+.sidebar{
+  width:180px;flex-shrink:0;background:#080808;
+  display:flex;flex-direction:column;align-items:center;
+  padding:2rem 0 1.5rem;
+  border-right:1px solid var(--border);
+}
 .sb-logo{width:68px;height:68px;object-fit:cover;margin-bottom:1rem;display:block}
-.sb-brand{font-family:var(--J);font-size:8px;letter-spacing:4px;color:#555;text-transform:uppercase;text-align:center;margin-bottom:2rem}
+.sb-brand{font-family:var(--J);font-size:8px;letter-spacing:4px;color:#444;text-transform:uppercase;text-align:center;margin-bottom:2rem}
 .sb-nav{width:100%;display:flex;flex-direction:column;gap:0;flex:1}
-.sb-item{font-family:var(--J);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#666;padding:11px 20px;cursor:pointer;border:none;background:none;text-align:left;border-left:2px solid transparent;transition:color .2s,border-color .2s,background .2s;width:100%}
-.sb-item:hover{color:#ccc;background:rgba(255,255,255,.04)}
-.sb-item.active{color:#fff;border-left-color:#fff}
-.sb-footer{font-size:9px;letter-spacing:1px;color:#333;text-align:center;padding-top:1rem;border-top:1px solid #1e1e1e;width:calc(100% - 40px);text-transform:uppercase;font-family:var(--J)}
-.main{flex:1;min-width:0;overflow-y:auto;overflow-x:hidden}
+.sb-item{
+  font-family:var(--J);font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:#555;padding:11px 20px;cursor:pointer;border:none;background:none;
+  text-align:left;border-left:2px solid transparent;
+  transition:color .2s,border-color .2s,background .2s;width:100%;
+}
+.sb-item:hover{color:#ccc;background:rgba(255,255,255,.03)}
+.sb-item.active{color:#e0e0e0;border-left-color:#888}
+.sb-footer{font-size:9px;letter-spacing:1px;color:#2a2a2a;text-align:center;padding-top:1rem;border-top:1px solid #111;width:calc(100% - 40px);text-transform:uppercase;font-family:var(--J)}
+
+/* MAIN */
+.main{flex:1;min-width:0;overflow-y:auto;overflow-x:hidden;background:var(--bg)}
 .section{display:none}
 .section.visible{display:block}
+.section.cover.visible{display:flex}
+
+/* SHARED ELEMENTS */
+.s-hero{background:#080808;padding:2.5rem 2.5rem 2rem;border-bottom:1px solid var(--border)}
+.s-eyebrow{font-family:var(--J);font-size:8px;letter-spacing:4px;color:#555;text-transform:uppercase;margin-bottom:.6rem}
+.s-title{font-family:var(--C);font-size:36px;font-weight:300;color:#e8e8e8;line-height:1.1}
+.s-body{padding:2.5rem}
+.section-label{font-family:var(--J);font-size:8px;letter-spacing:3px;color:#444;text-transform:uppercase;margin:2rem 0 .75rem}
+.body-text{font-family:var(--J);font-size:12.5px;color:var(--ink2);line-height:1.9;margin-bottom:.9rem}
+.accent-rule{width:24px;height:1px;background:#666;margin:.75rem 0}
+.divider{height:1px;background:var(--border);margin:2rem 0}
 
 /* COVER */
-.cover{background:#0d0d0d;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;text-align:center}
+.cover{
+  background:#080808;min-height:100vh;
+  flex-direction:column;align-items:center;justify-content:center;
+  padding:3rem 2rem;text-align:center;
+}
 .cover-logo{width:90px;height:90px;object-fit:cover;margin-bottom:2rem;display:block}
-.cover-rule{width:40px;height:1px;background:#333;margin:.75rem auto}
-.cover h1{font-family:var(--C);font-size:48px;font-weight:300;color:#fff;line-height:1.1;letter-spacing:-1px}
-.cover-sub{font-family:var(--J);font-size:9px;letter-spacing:4px;color:#555;text-transform:uppercase;margin-top:.75rem}
-.cover-line{width:1px;height:36px;background:#222;margin:1.5rem auto}
-.cover-tag{font-family:var(--J);font-size:11px;color:#555;letter-spacing:.5px;line-height:2.2}
-
-/* SECTION SHELLS */
-.s-hero{background:#0d0d0d;padding:2.5rem 2.5rem 2rem}
-.s-eyebrow{font-family:var(--J);font-size:8px;letter-spacing:4px;color:#555;text-transform:uppercase;margin-bottom:.6rem}
-.s-title{font-family:var(--C);font-size:36px;font-weight:300;color:#fff;line-height:1.1}
-.s-body{padding:2.5rem}
+.cover-rule{width:40px;height:1px;background:#2a2a2a;margin:.75rem auto}
+.cover h1{font-family:var(--C);font-size:48px;font-weight:300;color:#e8e8e8;line-height:1.1;letter-spacing:-1px}
+.cover-sub{font-family:var(--J);font-size:9px;letter-spacing:4px;color:#444;text-transform:uppercase;margin-top:.75rem}
+.cover-line{width:1px;height:36px;background:#1e1e1e;margin:1.5rem auto}
+.cover-tag{font-family:var(--J);font-size:11px;color:#555;letter-spacing:.5px;line-height:2.5}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:190px 1fr;gap:2.5rem;align-items:start}
-.about-portrait{background:#f9f9f9;border:1px solid var(--border);padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.about-portrait img{width:120px;height:150px;object-fit:cover;object-position:top center;display:block}
-.portrait-rule{width:24px;height:1px;background:#ddd}
-.portrait-name-it{font-family:var(--C);font-size:18px;font-style:italic;font-weight:300;color:#333}
-.portrait-name{font-family:var(--J);font-size:10px;letter-spacing:4px;color:#999;text-transform:uppercase}
+.about-portrait{
+  background:var(--bg2);border:1px solid var(--border);
+  padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:.75rem
+}
+.about-portrait img{width:120px;height:150px;object-fit:cover;object-position:top center;display:block;filter:grayscale(20%)}
+.portrait-rule{width:24px;height:1px;background:var(--border2)}
+.portrait-name-it{font-family:var(--C);font-size:18px;font-style:italic;font-weight:300;color:#ccc}
+.portrait-name{font-family:var(--J);font-size:10px;letter-spacing:4px;color:#555;text-transform:uppercase}
 .portrait-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
-.ptag{font-size:9px;letter-spacing:1px;color:#999;border:1px solid #e0e0e0;padding:2px 7px;text-transform:uppercase;font-family:var(--J)}
-.about-text h3{font-family:var(--C);font-size:26px;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:.4rem}
-.accent-rule{width:24px;height:1px;background:var(--ink);margin:.75rem 0}
-.body-text{font-family:var(--J);font-size:12.5px;color:var(--ink2);line-height:1.9;margin-bottom:.9rem}
+.ptag{font-size:9px;letter-spacing:1px;color:#555;border:1px solid var(--border);padding:2px 7px;text-transform:uppercase;font-family:var(--J)}
+.about-text h3{font-family:var(--C);font-size:26px;font-weight:300;color:#ddd;line-height:1.3;margin-bottom:.4rem}
 .stats-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin:1.5rem 0}
-.stat{background:var(--bg);padding:.85rem;text-align:center}
-.stat-n{font-family:var(--C);font-size:28px;font-weight:300;color:var(--ink)}
-.stat-l{font-family:var(--J);font-size:9px;letter-spacing:1px;color:var(--ink3);text-transform:uppercase;margin-top:2px}
-.quote{border-left:1px solid #ddd;padding:.6rem 1.1rem}
-.quote p{font-family:var(--C);font-size:17px;font-style:italic;font-weight:300;color:var(--ink);line-height:1.5}
-.quote span{font-family:var(--J);font-size:10px;color:var(--ink3);display:block;margin-top:.3rem;letter-spacing:1px}
+.stat{background:var(--bg2);padding:.85rem;text-align:center}
+.stat-n{font-family:var(--C);font-size:28px;font-weight:300;color:#ccc}
+.stat-l{font-family:var(--J);font-size:9px;letter-spacing:1px;color:#444;text-transform:uppercase;margin-top:2px}
+.quote{border-left:1px solid var(--border2);padding:.6rem 1.1rem}
+.quote p{font-family:var(--C);font-size:17px;font-style:italic;font-weight:300;color:#bbb;line-height:1.5}
+.quote span{font-family:var(--J);font-size:10px;color:#444;display:block;margin-top:.3rem;letter-spacing:1px}
 
 /* LEASING */
-.section-label{font-family:var(--J);font-size:8px;letter-spacing:3px;color:var(--ink3);text-transform:uppercase;margin:2rem 0 .75rem}
 .steps-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem}
-.step{background:var(--bg);padding:1.25rem}
-.step-n{font-family:var(--C);font-size:42px;font-weight:300;color:#ececec;line-height:1;margin-bottom:.6rem}
-.step-t{font-family:var(--C);font-size:19px;font-weight:400;color:var(--ink);margin-bottom:.4rem}
-.step-d{font-family:var(--J);font-size:11.5px;color:var(--ink2);line-height:1.8}
+.step{background:var(--bg2);padding:1.5rem}
+.step-n{font-family:var(--C);font-size:42px;font-weight:300;color:#222;line-height:1;margin-bottom:.6rem}
+.step-t{font-family:var(--C);font-size:20px;font-weight:400;color:#ccc;margin-bottom:.5rem}
+.step-d{font-family:var(--J);font-size:11.5px;color:var(--ink3);line-height:1.8}
+
+.info-block{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.25rem}
+.info-block h4{font-family:var(--C);font-size:20px;font-weight:400;color:#ccc;margin-bottom:.75rem}
+.info-block p{font-family:var(--J);font-size:12px;color:var(--ink3);line-height:1.9}
+.info-block strong{color:#aaa;font-weight:500}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.5rem}
+.col-block{background:var(--bg2);padding:1.5rem}
+.col-block h4{font-family:var(--C);font-size:18px;font-weight:400;color:#ccc;margin-bottom:.75rem}
+.col-block p{font-family:var(--J);font-size:12px;color:var(--ink3);line-height:1.8}
+.col-block ul{list-style:none;margin-top:.5rem}
+.col-block ul li{font-family:var(--J);font-size:12px;color:var(--ink3);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;line-height:1.6}
+.col-block ul li:last-child{border-bottom:none}
+.li-dash{color:#444;flex-shrink:0}
+
+.highlight-box{background:var(--bg3);border:1px solid var(--border2);padding:1.75rem;margin:1.5rem 0}
+.highlight-box h4{font-family:var(--C);font-size:22px;font-weight:300;color:#ccc;margin-bottom:1rem}
+.highlight-row{display:flex;align-items:flex-start;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.highlight-row:last-child{border-bottom:none}
+.h-num{font-family:var(--C);font-size:22px;font-weight:300;color:#555;min-width:28px}
+.h-content h5{font-family:var(--J);font-size:12px;font-weight:500;color:#aaa;margin-bottom:.25rem}
+.h-content p{font-family:var(--J);font-size:11.5px;color:var(--ink3);line-height:1.75}
+
 .benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
-.benefit{background:var(--bg);padding:1.1rem 1.25rem}
-.benefit-t{font-family:var(--J);font-size:11.5px;font-weight:500;color:var(--ink);margin-bottom:.35rem}
-.benefit-d{font-family:var(--J);font-size:11.5px;color:var(--ink2);line-height:1.75}
+.benefit{background:var(--bg2);padding:1.25rem 1.5rem}
+.benefit-t{font-family:var(--J);font-size:11.5px;font-weight:500;color:#bbb;margin-bottom:.4rem}
+.benefit-d{font-family:var(--J);font-size:11.5px;color:var(--ink3);line-height:1.75}
 .benefit-full{grid-column:1/-1}
 
+.compare-table{width:100%;border-collapse:collapse;border:1px solid var(--border);margin:1.5rem 0}
+.compare-table th{font-family:var(--J);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#555;background:var(--bg3);padding:.85rem 1rem;border-bottom:1px solid var(--border);text-align:left;font-weight:400}
+.compare-table td{font-family:var(--J);font-size:12px;color:var(--ink3);padding:.85rem 1rem;border-bottom:1px solid var(--border);line-height:1.6}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table td:first-child{color:#888;font-weight:500}
+.compare-table td.yes{color:#6a9a6a}
+.compare-table td.no{color:#8a5050}
+
 /* FISCALITE */
-.legal-block{background:var(--bg2);border:1px solid var(--border);padding:1.25rem 1.5rem;margin-bottom:1.75rem}
-.legal-block h4{font-family:var(--C);font-size:19px;font-weight:400;color:var(--ink);margin-bottom:.6rem}
-.legal-block p{font-family:var(--J);font-size:12px;color:var(--ink2);line-height:1.9}
-.legal-block strong{color:var(--ink);font-weight:500}
+.legal-block{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.75rem}
+.legal-block h4{font-family:var(--C);font-size:20px;font-weight:400;color:#ccc;margin-bottom:.75rem}
+.legal-block p{font-family:var(--J);font-size:12px;color:var(--ink3);line-height:1.9}
+.legal-block strong{color:#aaa;font-weight:500}
 .cond-list{list-style:none;margin-bottom:1.75rem}
-.cond-list li{display:flex;align-items:flex-start;gap:10px;font-family:var(--J);font-size:12px;color:var(--ink2);padding:9px 0;border-bottom:1px solid var(--border);line-height:1.6}
+.cond-list li{display:flex;align-items:flex-start;gap:10px;font-family:var(--J);font-size:12px;color:var(--ink3);padding:9px 0;border-bottom:1px solid var(--border);line-height:1.6}
 .cond-list li:first-child{border-top:1px solid var(--border)}
-.chk{color:var(--ink);flex-shrink:0;font-size:11px;font-weight:500;margin-top:1px;font-family:var(--J)}
+.chk{color:#666;flex-shrink:0;font-size:11px;font-weight:500;margin-top:1px;font-family:var(--J)}
 .partner-block{display:flex;align-items:center;gap:1.1rem;background:var(--bg2);border:1px solid var(--border);padding:1.1rem 1.25rem}
-.partner-icon{width:38px;height:38px;background:#111;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.partner-n{font-family:var(--J);font-size:12px;font-weight:500;color:var(--ink)}
+.partner-icon{width:38px;height:38px;background:var(--bg4);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border)}
+.partner-n{font-family:var(--J);font-size:12px;font-weight:500;color:#aaa}
 .partner-d{font-family:var(--J);font-size:11px;color:var(--ink3);margin-top:2px;line-height:1.6}
+
+.example-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin:1.5rem 0}
+.ex-card{background:var(--bg2);padding:1.25rem}
+.ex-label{font-family:var(--J);font-size:8px;letter-spacing:2px;color:#444;text-transform:uppercase;margin-bottom:1rem}
+.ex-row{padding:5px 0;border-bottom:1px solid var(--border)}
+.ex-row:last-child{border-bottom:none}
+.ex-key{font-family:var(--J);font-size:10px;color:#444;margin-bottom:2px}
+.ex-val{font-family:var(--C);font-size:17px;font-weight:300;color:#bbb}
 
 /* SIMULATEUR */
 .sim-wrap{border:1px solid var(--border)}
 .sim-layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.sim-left{background:#fff;padding:2rem;border-right:1px solid var(--border)}
-.sim-right{background:#0d0d0d;padding:2rem}
+.sim-left{background:var(--bg2);padding:2rem;border-right:1px solid var(--border)}
+.sim-right{background:#080808;padding:2rem}
 .sim-field{margin-bottom:1.4rem}
-.sim-lbl{font-family:var(--J);font-size:9px;letter-spacing:2px;color:var(--ink2);text-transform:uppercase;display:block;margin-bottom:.5rem}
-.sim-lbl-w{font-family:var(--J);font-size:9px;letter-spacing:2px;color:#555;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.sim-lbl{font-family:var(--J);font-size:9px;letter-spacing:2px;color:#555;text-transform:uppercase;display:block;margin-bottom:.5rem}
 .slider-row{display:flex;align-items:center;gap:10px}
-.slider-row input[type=range]{flex:1;height:2px;accent-color:#111;cursor:pointer}
-.slider-val{font-family:var(--J);font-size:12px;font-weight:500;color:var(--ink);min-width:96px;text-align:right;white-space:nowrap}
-.slider-val-w{font-family:var(--J);font-size:12px;font-weight:500;color:#ccc;min-width:96px;text-align:right;white-space:nowrap}
-.sim-note{font-family:var(--J);font-size:10.5px;line-height:1.6;padding:.65rem .9rem;margin-top:.5rem;border-radius:2px}
-.sim-res-label{font-family:var(--J);font-size:8px;letter-spacing:3px;color:#555;text-transform:uppercase;margin-bottom:1.25rem}
-.res-row{padding:.75rem 0;border-bottom:1px solid #1a1a1a}
+.slider-row input[type=range]{flex:1;accent-color:#666;cursor:pointer}
+.slider-val{font-family:var(--J);font-size:12px;font-weight:500;color:#bbb;min-width:96px;text-align:right;white-space:nowrap}
+.sim-note{font-family:var(--J);font-size:10.5px;line-height:1.6;padding:.65rem .9rem;margin-top:.5rem}
+.sim-res-label{font-family:var(--J);font-size:8px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:1.25rem}
+.res-row{padding:.75rem 0;border-bottom:1px solid #111}
 .res-row:last-child{border-bottom:none;padding-bottom:0}
-.res-l{font-family:var(--J);font-size:9.5px;color:#555;letter-spacing:.3px;margin-bottom:3px}
-.res-v{font-family:var(--C);font-size:24px;font-weight:300;color:#fff}
-.res-v-sm{font-family:var(--C);font-size:18px;font-weight:300;color:#aaa}
-.res-note{font-family:var(--J);font-size:9.5px;color:#444;margin-top:2px}
-.progress-track{height:1px;background:#1e1e1e;margin-top:5px}
-.progress-fill{height:1px;background:#666;transition:width .25s}
-.yr-table{margin-top:1.1rem;border-top:1px solid #1a1a1a;padding-top:.9rem}
+.res-l{font-family:var(--J);font-size:9.5px;color:#444;letter-spacing:.3px;margin-bottom:3px}
+.res-v{font-family:var(--C);font-size:24px;font-weight:300;color:#ddd}
+.res-v-sm{font-family:var(--C);font-size:18px;font-weight:300;color:#888}
+.res-note{font-family:var(--J);font-size:9.5px;color:#333;margin-top:2px}
+.progress-track{height:1px;background:#1a1a1a;margin-top:5px}
+.progress-fill{height:1px;background:#555;transition:width .25s}
+.yr-table{margin-top:1.1rem;border-top:1px solid #111;padding-top:.9rem}
 .yr-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0}
-.yr-l{font-family:var(--J);font-size:10px;color:#555}
+.yr-l{font-family:var(--J);font-size:10px;color:#444}
 .yr-bar-wrap{flex:1;height:1px;background:#1a1a1a;margin:0 10px}
-.yr-v{font-family:var(--J);font-size:10px;color:#777}
-.sim-disclaimer{padding:1rem 2rem;font-family:var(--J);font-size:10px;color:var(--ink3);border-top:1px solid var(--border)}
+.yr-v{font-family:var(--J);font-size:10px;color:#666}
+.sim-disclaimer{padding:.85rem 2rem;font-family:var(--J);font-size:10px;color:#333;border-top:1px solid var(--border)}
 
 /* CONTACT */
-.contact-hero{background:#0d0d0d;padding:3.5rem 2.5rem;text-align:center}
+.contact-hero{background:#080808;padding:3.5rem 2.5rem;text-align:center;border-bottom:1px solid var(--border)}
 .contact-logo{width:62px;height:62px;object-fit:cover;display:block;margin:0 auto 1.5rem}
-.contact-h{font-family:var(--C);font-size:40px;font-weight:300;color:#fff;line-height:1.1;margin-bottom:.75rem}
-.contact-sub{font-family:var(--J);font-size:10px;color:#555;letter-spacing:1px}
-.cta-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#1a1a1a;border:1px solid #1a1a1a;margin-top:2rem}
-.cta-card{background:#111;padding:1.5rem 1.25rem}
-.cta-n{font-family:var(--C);font-size:20px;font-weight:300;color:#fff;margin-bottom:.2rem}
-.cta-wh{font-family:var(--J);font-size:9px;letter-spacing:1px;color:#555;margin-bottom:.65rem;text-transform:uppercase}
-.cta-d{font-family:var(--J);font-size:11px;color:#666;line-height:1.7}
-.urgency{padding:2rem 2.5rem;border-bottom:1px solid #111;background:#0a0a0a}
-.urg-label{font-family:var(--J);font-size:8px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:1rem}
+.contact-h{font-family:var(--C);font-size:40px;font-weight:300;color:#e8e8e8;line-height:1.1;margin-bottom:.75rem}
+.contact-sub{font-family:var(--J);font-size:10px;color:#444;letter-spacing:1px}
+.cta-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2rem}
+.cta-card{background:var(--bg2);padding:1.5rem 1.25rem}
+.cta-n{font-family:var(--C);font-size:20px;font-weight:300;color:#ccc;margin-bottom:.2rem}
+.cta-wh{font-family:var(--J);font-size:9px;letter-spacing:1px;color:#444;margin-bottom:.65rem;text-transform:uppercase}
+.cta-d{font-family:var(--J);font-size:11px;color:#555;line-height:1.7}
+.urgency{padding:2rem 2.5rem;border-bottom:1px solid var(--border);background:var(--bg2)}
+.urg-label{font-family:var(--J);font-size:8px;letter-spacing:3px;color:#333;text-transform:uppercase;margin-bottom:1rem}
 .urg-item{display:flex;gap:10px;padding:5px 0}
 .urg-dash{color:#333;font-family:var(--J);font-size:12px;flex-shrink:0}
-.urg-txt{font-family:var(--J);font-size:11.5px;color:#666;line-height:1.6}
-.contact-info{background:#0d0d0d;padding:2rem 2.5rem;text-align:center;border-top:1px solid #111}
-.ci-name{font-family:var(--J);font-size:8px;letter-spacing:5px;color:#444;text-transform:uppercase;margin-bottom:.75rem}
-.ci-val{font-family:var(--C);font-size:17px;font-weight:300;color:#777;margin:3px 0}
-.ci-sub{font-family:var(--J);font-size:10px;color:#333;margin-top:6px}
-.legal-txt{font-family:var(--J);font-size:9.5px;color:#333;text-align:center;padding:1.25rem 2.5rem;border-top:1px solid #111;line-height:1.9;background:#0a0a0a}
+.urg-txt{font-family:var(--J);font-size:11.5px;color:#555;line-height:1.6}
+.contact-info{background:var(--bg);padding:2rem 2.5rem;text-align:center;border-bottom:1px solid var(--border)}
+.ci-name{font-family:var(--J);font-size:8px;letter-spacing:5px;color:#333;text-transform:uppercase;margin-bottom:.75rem}
+.ci-val{font-family:var(--C);font-size:17px;font-weight:300;color:#555;margin:3px 0}
+.ci-sub{font-family:var(--J);font-size:10px;color:#2a2a2a;margin-top:6px}
+.legal-txt{font-family:var(--J);font-size:9.5px;color:#2a2a2a;text-align:center;padding:1.25rem 2.5rem;line-height:1.9;background:var(--bg)}
 </style>
 </head>
 <body>
 <div class="shell">
+
   <aside class="sidebar">
     <img class="sb-logo" src="data:image/png;base64,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YdM3Q3i67Fj7q4c1JTnzjH+lcPA/E7ju7qFSLIb1dshvNTeb5cKm43CqfzzVE7y57z9J8B3AdwAAHRY9EBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREHvoayroKptVQ1U9LUM35ZYZCx7dxsdiOo6HZZP32ZV/rNev8Av0v+8sKiDNe+zKv9Zr1/36X/AHl4OWZSQQclvJB//fS/7ywyIPfWVdXWSdpV1U9Q/wDSlkLz95XoREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBFl8aoLLXzTNvV/wDyPGxoMb/Q3z9od+o2b3LOe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqe93BP1jfySf+qCGIpn73cE/WN/JJ/wCqwOSUNooauOOzXz8sQuj5ny+ivg5Xbn1eV3f02O/tQYpEWYw+mpJ75FPch/ydRg1NX6vMDGzryEbj47uVg9rwgnMNBR3PS+8YpFSxC9Y2yO+CRrfhJRJsysiPjuxrqbp4ejyHbqVq5T7Ab/Y7FqBSZHcbvW1sMkz23OI0I3qaeYOZUMPwnzmPePpKjue4/LiuZXXH5ZRMKKocyKYd00R6xyD2PYWuHscEEytGQ3+k4e7jHS3u5QMiyajijEdU9vIx1NUuLBsejSWtJHduAfBfLpXcKjLs1teF5PNNdaC+VLKBstQTLPRyynkjmie7dzOVxa4tB5XAEOB6ELEygfoJdxcKmpp4/fRRcroKdspJ9FquhBe3Ye3dfvHBRY3jNXmeJOqbtcaUejS1FTG2B1odMHMbM2Jrn9oXDcMl5gGO728xYUEKtN3utgqqp1puEtHNNE6mkmp37OMZcCQ1w6gHlHUbbjcdxKneieR5DVagRw1N9uk8f5MubuSSrkc3dtBUOadie8EAjyIC1kpzoV8o0X1VdP8A5fUIMNb82y+groK2lye7sngkbJGTWPcA4Hcbgkgj2HoVKtGbzd6GzZ7HRXOspmDG5Zw2GdzAJPSaZvOAD0dykjfv2JC1qp3pP/7Jz7/3Vl//ALVKg+DT2KnLsgv1XRRXKWz2w1sFPUN7SOSV08MIfI0/Hazti/lPQloBBaSF8wzXIpasS3KuddaYu3fRVvwlM4foiPuYNugLOUt+aQvixLIbni98hvFqkiE8Ycx8c0YkimjcC18cjHdHsc0kEHzUujh06zOUR05dgl7lOzWSyOqLRK89w5zvLTAk97u1aPEtCCLjIai13m7VWKSVVkpa8PhbFHOXSRQGRrxF2nRx2LGjm6Egde8hTHRvI8hqcpuMdTfbpMxuN3qQNkq5HAObbalzXbE94cAQfAgFa+vdsr7LeKy0XSmdTV1HM6Coidtux7TsR06HqO8dCpbol/8Aq25/+7F8/wDldUgw1vzXL6GthrKbJrs2aF4ewuq3vbuPNpJBHmCCD4qPoiAiz2N+8/0aX3yC/dvz/B/k8xcnLt48/XffdZX81nlmf30yCGIpn+azyzP76ZPzWeWZ/fTIIYimf5rPLM/vpk/NZ5Zn99MghiKZ/ms8sz++mT81nlmf30yCGIpn+azyzP76ZPzWeWZ/fTIIYimf5rPLM/vpk/NZ5Zn99MghiKZ/ms8sz++mT81nlmf30yCGIpn+azyzP76ZPzWeWZ/fTIIYimf5rPLM/vpk/NZ5Zn99MghiKZ/ms8sz++mT81nlmf30yCGIpn+azyzP76ZPzWeWZ/fTIIYimf5rPLM/vplE7h6H6fP+T+39E7R3Ydvt2nJv6vNt03279kHoREQEREBERAREQEREBERAREQEREBERAREQEREBERAUqqLRPa8ENZ6ZaXyXGcCSOG6U0k8cLNi0OjZIXgPe8EggbdiCoqiAtkZ/SsvmnuKZSblZ3XSmojbLjTC6U5qXRw7ejTGIP5+sTmxbbbjsOoG4Wt0QbFoaIHQG5RflGzNqJL/AE1YylddaZtQ6GOmqGucIi/n6Oe0bbbnfoCsXpNdrZQ3uvtF9qfRbPf7dLbKuoLS5tOXcr4ZnAdS1k0cTjt12B26qHIg+y9W6a03Se3TzUc8kDuUyUlVHURO9rZIyWuH0FTPQaGM556VPX2uhp4rdXxukrrhBSt5paKeNgBle3mJe5o6b7bjfZQBEHtq4H0tTJTyOic+Nxa4xStkaT7HNJaR7QSFPtIaZr7NmzpLhaaT0nHpaSBtZc6emdLKaineGtbI9pPqsceg26bd614iCSY5Q47cLNc7fca4W6+NljkttRId6aYAPEkMjgSGEksLH7cu4cHEA8w9VLilydVNbXy0duo9/XrZ6hhhDfFzS0ntem/SPmJ8AVgEQZ7UC801/wAurrnRMlbSO7OGn7XbtHRRRtjY5+3TnLWAnqepPUqRaGwMdkt0qJq+1UUX5AutMH11xgpQ6WagqIomt7V7eYl72jpvtv12C1+iD2VML6eokgkMZfG4tcY5GvaSPJzSQR7QSCvWiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg//9k=" alt="BD Artist">
     <p class="sb-brand">BD Artist</p>
@@ -144,12 +217,14 @@ html,body{height:100%;overflow:hidden}
       <button class="sb-item active" onclick="show('cover',this)">Accueil</button>
       <button class="sb-item" onclick="show('about',this)">L'artiste</button>
       <button class="sb-item" onclick="show('leasing',this)">Le Leasing</button>
+      <button class="sb-item" onclick="show('avantages',this)">Avantages</button>
       <button class="sb-item" onclick="show('fiscalite',this)">Fiscalité</button>
       <button class="sb-item" onclick="show('sim',this)">Simulateur</button>
       <button class="sb-item" onclick="show('contact',this)">Contact</button>
     </nav>
     <p class="sb-footer">© 2025 BD Artist</p>
   </aside>
+
   <main class="main">
 
     <!-- COVER -->
@@ -186,7 +261,8 @@ html,body{height:100%;overflow:hidden}
             <h3>Une vision artistique<br>hors du commun.</h3>
             <div class="accent-rule"></div>
             <p class="body-text">BD Artist, c'est l'histoire d'un homme qui a toujours eu deux amours : l'art et le métal. Benjamin Duclos transforme la matière brute en œuvres vivantes, chaque pièce portant l'empreinte d'une âme et d'un geste unique.</p>
-            <p class="body-text">Installé en France, ses sculptures ornent aujourd'hui des espaces prestigieux — sièges sociaux, hôtels de luxe, résidences privées — apportant une signature visuelle forte et une plus-value immédiate à chaque environnement.</p>
+            <p class="body-text">À 21 ans, il prend la tête d'une métallerie. À 29 ans, il décide de suivre son instinct et lance BD Artist en 2020 : une ligne de sculptures prestige de haute qualité, distinguée par des finitions audacieuses, l'utilisation de matériaux nobles — acier, bronze, résines — et un soin extrême du détail.</p>
+            <p class="body-text">Ses créations ornent aujourd'hui des espaces prestigieux — sièges sociaux, hôtels de luxe, résidences privées — apportant une signature visuelle forte et une plus-value immédiate à chaque environnement. Chaque pièce est une édition limitée, pensée pour durer et prendre de la valeur avec le temps.</p>
             <div class="stats-row">
               <div class="stat"><div class="stat-n">2020</div><div class="stat-l">Fondation</div></div>
               <div class="stat"><div class="stat-n">+50</div><div class="stat-l">Œuvres</div></div>
@@ -205,54 +281,242 @@ html,body{height:100%;overflow:hidden}
     <!-- LEASING -->
     <div class="section" id="leasing">
       <div class="s-hero">
-        <p class="s-eyebrow">Financement</p>
+        <p class="s-eyebrow">Comprendre</p>
         <h2 class="s-title">Qu'est-ce que le Leasing d'Art ?</h2>
       </div>
       <div class="s-body">
-        <p class="body-text">Le Leasing d'Art est un dispositif de financement permettant aux entreprises d'accéder à des œuvres d'art originales sans mobiliser leur trésorerie. Basé sur un contrat de location avec option d'achat, il s'étale de 13 à 60 mois et offre un avantage fiscal immédiat.</p>
-        <p class="section-label">Comment ça fonctionne</p>
+
+        <div class="info-block">
+          <h4>Définition</h4>
+          <p>Le Leasing d'Art — aussi appelé <strong>Location avec Option d'Achat (LOA) d'œuvre d'art</strong> — est un contrat par lequel une entreprise loue une œuvre d'art originale auprès d'un organisme financier spécialisé, contre le versement de mensualités, avec la possibilité de l'acquérir définitivement en fin de contrat pour une <strong>valeur résiduelle très faible</strong>.</p>
+          <br>
+          <p>Contrairement à un achat classique, le leasing ne mobilise pas de trésorerie immédiate. L'entreprise bénéficie de l'œuvre dès la signature du contrat, tout en préservant ses liquidités pour d'autres investissements.</p>
+        </div>
+
+        <p class="section-label">Le mécanisme en 3 étapes</p>
         <div class="steps-row">
-          <div class="step"><div class="step-n">01</div><p class="step-t">Vous choisissez</p><p class="step-d">Sélectionnez une sculpture BD Artist correspondant à votre espace. Chaque pièce est unique ou en édition très limitée.</p></div>
-          <div class="step"><div class="step-n">02</div><p class="step-t">Vous louez</p><p class="step-d">Un contrat de 13 à 60 mois est établi via Art In Move. Vos mensualités sont déductibles à 100% de votre résultat imposable.</p></div>
-          <div class="step"><div class="step-n">03</div><p class="step-t">Vous acquisez</p><p class="step-d">En fin de contrat, levez l'option d'achat à valeur résiduelle symbolique. L'œuvre vous appartient définitivement.</p></div>
+          <div class="step">
+            <div class="step-n">01</div>
+            <p class="step-t">Sélection</p>
+            <p class="step-d">L'entreprise choisit une œuvre BD Artist dans notre catalogue. Un contrat de leasing est établi avec notre partenaire financier Art In Move, spécialisé dans le financement d'œuvres d'art.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">02</div>
+            <p class="step-t">Location</p>
+            <p class="step-d">L'entreprise verse des mensualités pendant 13 à 60 mois. Ces loyers sont 100% déductibles du résultat imposable. L'œuvre est exposée dans les locaux de l'entreprise dès le début du contrat.</p>
+          </div>
+          <div class="step">
+            <div class="step-n">03</div>
+            <p class="step-t">Acquisition</p>
+            <p class="step-d">À l'échéance, l'entreprise lève l'option d'achat pour une valeur résiduelle symbolique (généralement 1% à 5% de la valeur initiale). L'œuvre entre alors définitivement au patrimoine.</p>
+          </div>
         </div>
-        <p class="section-label">Les avantages clés</p>
+
+        <p class="section-label">Qui peut en bénéficier ?</p>
+        <div class="two-col">
+          <div class="col-block">
+            <h4>Entreprises éligibles</h4>
+            <p style="font-family:var(--J);font-size:12px;color:var(--ink3);line-height:1.8;margin-bottom:.75rem">Toute entité juridique assujettie à l'impôt sur les sociétés (IS) ou à l'impôt sur le revenu (IR) dans la catégorie des BIC/BNC peut bénéficier du dispositif :</p>
+            <ul>
+              <li><span class="li-dash">—</span>Sociétés (SAS, SARL, SA, SCI…)</li>
+              <li><span class="li-dash">—</span>Professions libérales (médecins, avocats, architectes…)</li>
+              <li><span class="li-dash">—</span>Artisans et commerçants</li>
+              <li><span class="li-dash">—</span>Associations assujetties à l'IS</li>
+              <li><span class="li-dash">—</span>Groupes et holdings</li>
+            </ul>
+          </div>
+          <div class="col-block">
+            <h4>Œuvres éligibles</h4>
+            <p style="font-family:var(--J);font-size:12px;color:var(--ink3);line-height:1.8;margin-bottom:.75rem">Les œuvres doivent répondre à des critères précis fixés par le Code Général des Impôts :</p>
+            <ul>
+              <li><span class="li-dash">—</span>Création originale d'un artiste vivant</li>
+              <li><span class="li-dash">—</span>Sculptures originales en tirage limité (≤ 8 exemplaires)</li>
+              <li><span class="li-dash">—</span>Peintures, dessins, gravures originales</li>
+              <li><span class="li-dash">—</span>Photographies originales tirées et signées</li>
+              <li><span class="li-dash">—</span>Céramiques et tapisseries originales</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="section-label">Leasing vs achat comptant vs emprunt</p>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Critère</th>
+              <th>Leasing d'art</th>
+              <th>Achat comptant</th>
+              <th>Emprunt bancaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Trésorerie préservée</td><td class="yes">Oui — mensualités</td><td class="no">Non — décaissement immédiat</td><td class="yes">Oui — crédit</td></tr>
+            <tr><td>Déductibilité fiscale</td><td class="yes">100% des loyers</td><td class="yes">Amortissement 5 ans (CGI)</td><td class="no">Intérêts seulement</td></tr>
+            <tr><td>Impact bilan</td><td class="yes">Hors bilan (charge)</td><td class="no">Actif immobilisé</td><td class="no">Dette au passif</td></tr>
+            <tr><td>Capacité d'emprunt</td><td class="yes">Préservée</td><td>Neutre</td><td class="no">Réduite</td></tr>
+            <tr><td>Coût total</td><td class="yes">Faible (valeur résiduelle min.)</td><td>Prix marché</td><td class="no">Prix + intérêts</td></tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <!-- AVANTAGES -->
+    <div class="section" id="avantages">
+      <div class="s-hero">
+        <p class="s-eyebrow">Pourquoi choisir</p>
+        <h2 class="s-title">Les avantages du Leasing d'Art</h2>
+      </div>
+      <div class="s-body">
+
+        <div class="highlight-box">
+          <h4>Les 5 piliers financiers</h4>
+          <div class="highlight-row">
+            <span class="h-num">01</span>
+            <div class="h-content">
+              <h5>Déduction fiscale à 100% des mensualités</h5>
+              <p>Chaque loyer versé dans le cadre du contrat de leasing constitue une <strong style="color:#888">charge locative déductible</strong> du résultat imposable de l'entreprise. Contrairement à un achat, où la déduction s'étale via l'amortissement, ici la charge est immédiate et intégrale dès le premier paiement. C'est l'un des rares dispositifs où l'intégralité de la dépense est fiscalement optimisée sans condition de durée préalable.</p>
+            </div>
+          </div>
+          <div class="highlight-row">
+            <span class="h-num">02</span>
+            <div class="h-content">
+              <h5>Préservation de la capacité d'emprunt bancaire</h5>
+              <p>Le leasing est comptabilisé comme une <strong style="color:#888">charge d'exploitation</strong>, non comme un emprunt. Il n'apparaît donc pas dans l'endettement de l'entreprise. Les banques ne le prennent pas en compte dans le calcul de la capacité de financement, ce qui permet de conserver l'intégralité de sa marge de crédit pour d'autres projets stratégiques.</p>
+            </div>
+          </div>
+          <div class="highlight-row">
+            <span class="h-num">03</span>
+            <div class="h-content">
+              <h5>Dissociation de l'actif du bilan</h5>
+              <p>L'œuvre financée par leasing n'est pas inscrite à l'actif du bilan pendant la durée du contrat. En cas de <strong style="color:#888">cession, fusion ou restructuration</strong> de l'entreprise, l'œuvre reste dissociée de l'actif cédé, permettant à l'entrepreneur de la conserver personnellement ou de la transférer indépendamment.</p>
+            </div>
+          </div>
+          <div class="highlight-row">
+            <span class="h-num">04</span>
+            <div class="h-content">
+              <h5>Flexibilité de durée — de 13 à 60 mois</h5>
+              <p>Le contrat est modulable selon les besoins de trésorerie de l'entreprise. Une durée courte (13-24 mois) maximise la rapidité d'acquisition. Une durée longue (48-60 mois) réduit les mensualités et lisse la charge sur plusieurs exercices. Cette <strong style="color:#888">adaptabilité</strong> est un avantage considérable face aux financements rigides classiques.</p>
+            </div>
+          </div>
+          <div class="highlight-row">
+            <span class="h-num">05</span>
+            <div class="h-content">
+              <h5>Acquisition à valeur résiduelle symbolique</h5>
+              <p>À l'issue du contrat, la valeur résiduelle est généralement fixée entre <strong style="color:#888">1% et 5%</strong> de la valeur initiale de l'œuvre. Après avoir déduit fiscalement l'ensemble des loyers, l'entreprise acquiert une œuvre dont la valeur de marché peut s'être appréciée, pour un montant symbolique. Le coût total réel de possession est ainsi très inférieur au prix d'achat direct.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="section-label">Avantages extra-financiers</p>
         <div class="benefits-grid">
-          <div class="benefit"><p class="benefit-t">Déduction fiscale à 100%</p><p class="benefit-d">Toutes vos mensualités sont déductibles du résultat imposable, dès le premier mois.</p></div>
-          <div class="benefit"><p class="benefit-t">Capacité d'emprunt préservée</p><p class="benefit-d">Charge locative hors bilan : votre capacité d'emprunt bancaire n'est pas affectée.</p></div>
-          <div class="benefit"><p class="benefit-t">Propriété conservée</p><p class="benefit-d">L'œuvre reste dissociée du bilan, même en cas de cession ou restructuration.</p></div>
-          <div class="benefit"><p class="benefit-t">Étalement de 13 à 60 mois</p><p class="benefit-d">Choisissez la durée adaptée à votre trésorerie et vos objectifs financiers.</p></div>
-          <div class="benefit benefit-full"><p class="benefit-t">Acquisition à faible coût résiduel</p><p class="benefit-d">À l'issue du contrat, la valeur résiduelle est symbolique. Vous devenez propriétaire d'une œuvre de valeur après avoir bénéficié de toutes les déductions fiscales.</p></div>
+          <div class="benefit">
+            <p class="benefit-t">Image et prestige</p>
+            <p class="benefit-d">Intégrer une sculpture originale dans vos locaux renvoie une image de succès, de culture et de sensibilité artistique auprès de vos clients, partenaires et collaborateurs. Un investissement visible et différenciant.</p>
+          </div>
+          <div class="benefit">
+            <p class="benefit-t">Valorisation immobilière</p>
+            <p class="benefit-d">Une œuvre d'art de qualité valorise l'espace dans lequel elle est exposée. Dans le cadre de l'aménagement de bureaux ou de locaux professionnels, c'est un vecteur de valorisation souvent sous-estimé.</p>
+          </div>
+          <div class="benefit">
+            <p class="benefit-t">Soutien à la création française</p>
+            <p class="benefit-d">En choisissant BD Artist, vous soutenez directement un artiste français indépendant. Cette démarche peut être valorisée dans votre communication RSE et votre bilan mécénat.</p>
+          </div>
+          <div class="benefit">
+            <p class="benefit-t">Investissement patrimonial</p>
+            <p class="benefit-d">Les œuvres d'artistes émergents reconnus tendent à prendre de la valeur avec le temps. Votre acquisition constitue ainsi un actif patrimonial qui peut se révéler rentable à long terme.</p>
+          </div>
+          <div class="benefit benefit-full">
+            <p class="benefit-t">Bien-être et productivité des équipes</p>
+            <p class="benefit-d">De nombreuses études montrent qu'un environnement de travail soigné et inspirant améliore la créativité, la motivation et le bien-être des collaborateurs. L'art en entreprise est reconnu comme un facteur positif de qualité de vie au travail (QVT).</p>
+          </div>
         </div>
+
       </div>
     </div>
 
     <!-- FISCALITE -->
     <div class="section" id="fiscalite">
       <div class="s-hero">
-        <p class="s-eyebrow">Optimisation</p>
-        <h2 class="s-title">Réduction d'impôt & cadre légal</h2>
+        <p class="s-eyebrow">Cadre légal</p>
+        <h2 class="s-title">Réduction d'impôt & fiscalité</h2>
       </div>
       <div class="s-body">
         <div class="legal-block">
           <h4>Article 238 bis AB du Code Général des Impôts</h4>
-          <p>Toute entreprise assujettie à l'IS ou à l'IR acquérant une œuvre d'art originale d'un <strong>artiste vivant</strong> peut déduire le prix d'acquisition de son résultat imposable, dans la limite de <strong>20 000 € ou 5‰ du chiffre d'affaires HT</strong> (le montant le plus élevé étant retenu). La déduction s'étale sur <strong>5 exercices consécutifs</strong> à parts égales.</p>
+          <p>Toute entreprise assujettie à l'IS ou à l'IR acquérant une œuvre d'art originale d'un <strong>artiste vivant</strong> peut déduire le prix d'acquisition de son résultat imposable, dans la limite de <strong>20 000 € ou 5‰ (cinq pour mille) du chiffre d'affaires HT</strong> — le montant le plus élevé étant retenu. La déduction s'étale sur <strong>5 exercices consécutifs</strong> à parts égales. Pour les achats via leasing, les <strong>loyers sont déductibles immédiatement</strong>, en totalité, sans plafond annuel lié à l'article 238 bis AB.</p>
         </div>
-        <p class="section-label">Conditions d'éligibilité</p>
+
+        <p class="section-label">Les deux régimes fiscaux applicables</p>
+        <div class="two-col">
+          <div class="col-block">
+            <h4>Régime achat — Art. 238 bis AB</h4>
+            <p style="font-family:var(--J);font-size:12px;color:var(--ink3);line-height:1.8">Pour l'achat direct d'une œuvre :</p>
+            <ul style="margin-top:.75rem">
+              <li><span class="li-dash">—</span>Déduction plafonnée à 20 000 € ou 5‰ du CA HT</li>
+              <li><span class="li-dash">—</span>Étalée sur 5 exercices obligatoirement</li>
+              <li><span class="li-dash">—</span>Œuvre inscrite à l'actif du bilan</li>
+              <li><span class="li-dash">—</span>Registre spécial obligatoire</li>
+              <li><span class="li-dash">—</span>Exposition obligatoire aux salariés/public</li>
+            </ul>
+          </div>
+          <div class="col-block">
+            <h4>Régime leasing — Charges locatives</h4>
+            <p style="font-family:var(--J);font-size:12px;color:var(--ink3);line-height:1.8">Pour le financement par LOA :</p>
+            <ul style="margin-top:.75rem">
+              <li><span class="li-dash">—</span>100% des loyers déductibles sans plafond</li>
+              <li><span class="li-dash">—</span>Déduction immédiate dès le premier loyer</li>
+              <li><span class="li-dash">—</span>Œuvre hors bilan pendant le contrat</li>
+              <li><span class="li-dash">—</span>Capacité d'emprunt préservée</li>
+              <li><span class="li-dash">—</span>Option d'achat à valeur résiduelle</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="section-label">Conditions d'éligibilité (art. 238 bis AB)</p>
         <ul class="cond-list">
           <li><span class="chk">—</span>L'artiste doit être vivant au moment de l'acquisition</li>
-          <li><span class="chk">—</span>L'œuvre doit être exposée dans un lieu accessible au public ou aux salariés</li>
-          <li><span class="chk">—</span>L'acquisition doit intervenir avant le 31 décembre de l'exercice concerné</li>
-          <li><span class="chk">—</span>L'œuvre doit être inscrite dans un registre spécial tenu par l'entreprise</li>
-          <li><span class="chk">—</span>La déduction est répartie sur 5 exercices comptables successifs à parts égales</li>
-          <li><span class="chk">—</span>L'œuvre doit être une création originale, non une reproduction</li>
+          <li><span class="chk">—</span>L'œuvre doit être exposée dans un lieu accessible au public ou aux salariés de l'entreprise</li>
+          <li><span class="chk">—</span>L'acquisition doit intervenir avant le 31 décembre de l'exercice fiscal concerné</li>
+          <li><span class="chk">—</span>L'œuvre doit être inscrite dans un registre spécial tenu par l'entreprise (art. 238 bis AB CGI)</li>
+          <li><span class="chk">—</span>La déduction doit être répartie sur exactement 5 exercices consécutifs à parts égales</li>
+          <li><span class="chk">—</span>L'œuvre doit être une création originale — les reproductions ne sont pas éligibles</li>
+          <li><span class="chk">—</span>Les sculptures en séries limitées sont éligibles dans la limite de 8 exemplaires numérotés et signés</li>
         </ul>
+
+        <p class="section-label">Exemples chiffrés</p>
+        <div class="example-grid">
+          <div class="ex-card">
+            <p class="ex-label">Exemple 1 — PME</p>
+            <div class="ex-row"><p class="ex-key">CA annuel HT</p><p class="ex-val">400 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Plafond applicable</p><p class="ex-val">20 000 € (fixe)</p></div>
+            <div class="ex-row"><p class="ex-key">Valeur de l'œuvre</p><p class="ex-val">60 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Déduction / an</p><p class="ex-val">12 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Économie IS 25%</p><p class="ex-val">3 000 € / an</p></div>
+          </div>
+          <div class="ex-card">
+            <p class="ex-label">Exemple 2 — ETI</p>
+            <div class="ex-row"><p class="ex-key">CA annuel HT</p><p class="ex-val">5 000 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Plafond applicable</p><p class="ex-val">25 000 € (5‰)</p></div>
+            <div class="ex-row"><p class="ex-key">Valeur de l'œuvre</p><p class="ex-val">60 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Déduction / an</p><p class="ex-val">12 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Économie IS 25%</p><p class="ex-val">3 000 € / an</p></div>
+          </div>
+          <div class="ex-card">
+            <p class="ex-label">Exemple 3 — Grand groupe</p>
+            <div class="ex-row"><p class="ex-key">CA annuel HT</p><p class="ex-val">10 000 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Plafond applicable</p><p class="ex-val">50 000 € (5‰)</p></div>
+            <div class="ex-row"><p class="ex-key">Valeur de l'œuvre</p><p class="ex-val">120 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Déduction / an</p><p class="ex-val">24 000 €</p></div>
+            <div class="ex-row"><p class="ex-key">Économie IS 25%</p><p class="ex-val">6 000 € / an</p></div>
+          </div>
+        </div>
+
         <p class="section-label">Notre partenaire leasing</p>
         <div class="partner-block">
-          <div class="partner-icon"><svg width="18" height="18" viewBox="0 0 20 20"><polygon points="10,2 18,17 2,17" fill="white"/></svg></div>
+          <div class="partner-icon"><svg width="16" height="16" viewBox="0 0 20 20"><polygon points="10,2 18,17 2,17" fill="#888"/></svg></div>
           <div>
             <p class="partner-n">Art In Move</p>
-            <p class="partner-d">Spécialiste du leasing d'œuvres d'art — Accompagnement complet : montage financier, suivi administratif, dossier clé en main.</p>
+            <p class="partner-d">Spécialiste du leasing d'œuvres d'art — Accompagnement complet du montage financier, constitution du dossier, suivi administratif, gestion du registre spécial. Contact : artinmove.fr</p>
           </div>
         </div>
       </div>
@@ -330,7 +594,7 @@ html,body{height:100%;overflow:hidden}
               <div class="yr-table" id="yr-table"></div>
             </div>
           </div>
-          <p class="sim-disclaimer">Simulation indicative basée sur l'art. 238 bis AB CGI. Consultez votre expert-comptable pour une analyse personnalisée.</p>
+          <p class="sim-disclaimer">Simulation indicative — Art. 238 bis AB CGI. Les loyers de leasing sont intégralement déductibles, sans plafond annuel. Consultez votre expert-comptable.</p>
         </div>
       </div>
     </div>
@@ -344,14 +608,14 @@ html,body{height:100%;overflow:hidden}
         <div class="cta-row">
           <div class="cta-card"><p class="cta-n">Découvrir</p><p class="cta-wh">Les œuvres disponibles</p><p class="cta-d">Catalogue exclusif de sculptures en acier et matériaux nobles, toutes en édition limitée.</p></div>
           <div class="cta-card"><p class="cta-n">Contacter</p><p class="cta-wh">Benjamin Duclos</p><p class="cta-d">Rendez-vous personnalisé pour trouver l'œuvre qui correspond à votre projet.</p></div>
-          <div class="cta-card"><p class="cta-n">Simuler</p><p class="cta-wh">Votre avantage fiscal</p><p class="cta-d">Utilisez notre simulateur pour calculer votre économie d'impôt personnalisée en quelques secondes.</p></div>
+          <div class="cta-card"><p class="cta-n">Simuler</p><p class="cta-wh">Votre avantage fiscal</p><p class="cta-d">Calculez votre économie d'impôt personnalisée en quelques secondes avec notre outil.</p></div>
         </div>
       </div>
       <div class="urgency">
         <p class="urg-label">Pourquoi agir maintenant</p>
-        <div class="urg-item"><span class="urg-dash">—</span><span class="urg-txt">Le dispositif art. 238 bis AB est conditionné à des acquisitions avant le 31 décembre de chaque exercice</span></div>
-        <div class="urg-item"><span class="urg-dash">—</span><span class="urg-txt">Les éditions BD Artist sont limitées et numérotées — disponibilité non garantie</span></div>
-        <div class="urg-item"><span class="urg-dash">—</span><span class="urg-txt">Chaque exercice sans leasing est une opportunité fiscale manquée</span></div>
+        <div class="urg-item"><span class="urg-dash">—</span><span class="urg-txt">Le dispositif art. 238 bis AB est conditionné à des acquisitions avant le 31 décembre de chaque exercice fiscal</span></div>
+        <div class="urg-item"><span class="urg-dash">—</span><span class="urg-txt">Les éditions BD Artist sont limitées et numérotées — la disponibilité n'est pas garantie</span></div>
+        <div class="urg-item"><span class="urg-dash">—</span><span class="urg-txt">Chaque exercice sans leasing est une opportunité fiscale définitivement manquée</span></div>
       </div>
       <div class="contact-info">
         <p class="ci-name">BD Artist</p>
@@ -359,11 +623,12 @@ html,body{height:100%;overflow:hidden}
         <p class="ci-val">contact@benjaminduclos.com</p>
         <p class="ci-sub">France · Disponible pour déplacements</p>
       </div>
-      <p class="legal-txt">Document non contractuel, à titre informatif uniquement. Consultez votre expert-comptable ou conseiller fiscal pour une analyse personnalisée.<br>Art In Move — Partenaire Leasing d'Art &nbsp;·&nbsp; BD Artist © 2025 — Tous droits réservés</p>
+      <p class="legal-txt">Document non contractuel, à titre informatif uniquement. Consultez votre expert-comptable ou conseiller fiscal pour une analyse personnalisée de votre situation.<br>Art In Move — Partenaire Leasing d'Art &nbsp;·&nbsp; BD Artist © 2025 — Tous droits réservés</p>
     </div>
 
   </main>
 </div>
+
 <script>
 function show(id,btn){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('visible')});
@@ -372,46 +637,62 @@ function show(id,btn){
   btn.classList.add('active');
   document.querySelector('.main').scrollTop=0;
 }
-function fmt(n){return Math.round(n).toLocaleString('fr-FR')+'\u00a0\u20ac'}
+
+function fmt(n){
+  return Math.round(n).toLocaleString('fr-FR')+'\u00a0\u20ac';
+}
+
 function calc(){
   var ca=parseInt(document.getElementById('ca').value,10);
   var oe=parseInt(document.getElementById('oeuvre').value,10);
   var tx=parseInt(document.getElementById('taux').value,10)/100;
   var du=parseInt(document.getElementById('duree').value,10);
+
   document.getElementById('ca-v').textContent=ca.toLocaleString('fr-FR')+'\u00a0\u20ac';
   document.getElementById('oe-v').textContent=oe.toLocaleString('fr-FR')+'\u00a0\u20ac';
   document.getElementById('tx-v').textContent=parseInt(document.getElementById('taux').value,10)+'\u00a0%';
   document.getElementById('du-v').textContent=du+' mois';
+
   var p5=ca*0.005;
   var p=Math.max(p5,20000);
   var pLbl=p5>=20000?'5\u2030 du CA':'plafond fixe l\u00e9gal';
   var dTot=Math.min(oe,p*5);
   var dan=dTot/5;
-  var ean=dan*tx;
+  var ean=Math.round(dan*tx);
   var etot=ean*5;
-  var pct=Math.min(Math.round(etot/oe*100),100);
+  var pct=oe>0?Math.min(Math.round(etot/oe*100),100):0;
   var reel=oe-etot;
-  var mens=oe/du;
+  var mens=Math.round(oe/du);
+
   var note=document.getElementById('elig-note');
   if(oe>p*5){
-    note.style.background='#fdf6ec';note.style.color='#7a4f00';note.style.border='1px solid #e8d09a';
-    note.textContent='Note\u00a0: valeur sup\u00e9rieure au plafond d\u00e9ductible total ('+fmt(p*5)+'). Seule cette fraction sera d\u00e9duite.';
+    note.style.background='#1a1300';
+    note.style.color='#8a6a00';
+    note.style.border='1px solid #332800';
+    note.textContent='Note\u00a0: valeur sup\u00e9rieure au plafond d\u00e9ductible total ('+fmt(Math.round(p*5))+'). Seule cette fraction sera d\u00e9duite.';
   }else{
-    note.style.background='#f4f8f4';note.style.color='#2a5a2a';note.style.border='1px solid #bdd9bd';
+    note.style.background='#0d1a0d';
+    note.style.color='#3a7a3a';
+    note.style.border='1px solid #1a331a';
     note.textContent='\u00c9ligible \u2014 l\u2019int\u00e9gralit\u00e9 de l\u2019\u0153uvre est d\u00e9ductible sur 5 ans.';
   }
-  document.getElementById('r-plafond').textContent=fmt(p)+'/an';
+
+  document.getElementById('r-plafond').textContent=fmt(Math.round(p))+'/an';
   document.getElementById('r-plafond-n').textContent='Calcul\u00e9 selon '+pLbl+' ('+fmt(Math.round(p5))+' vs 20\u00a0000\u00a0\u20ac)';
   document.getElementById('r-dan').textContent=fmt(Math.round(dan));
-  document.getElementById('r-ean').textContent=fmt(Math.round(ean));
-  document.getElementById('r-etot').textContent=fmt(Math.round(etot));
+  document.getElementById('r-ean').textContent=fmt(ean);
+  document.getElementById('r-etot').textContent=fmt(etot);
   document.getElementById('r-bar').style.width=pct+'%';
-  document.getElementById('r-mens').textContent=fmt(Math.round(mens))+' / mois';
+  document.getElementById('r-mens').textContent=fmt(mens)+' / mois';
   document.getElementById('r-reel').textContent=fmt(Math.round(reel));
-  var yt='<p style="font-family:var(--J);font-size:8px;letter-spacing:2px;color:#444;text-transform:uppercase;margin-bottom:6px">D\u00e9tail ann\u00e9e par ann\u00e9e</p>';
-  for(var y=1;y<=5;y++){yt+='<div class="yr-row"><span class="yr-l">Ann\u00e9e '+y+'</span><div class="yr-bar-wrap"></div><span class="yr-v">'+fmt(Math.round(ean))+'</span></div>';}
+
+  var yt='<p style="font-family:var(--J);font-size:8px;letter-spacing:2px;color:#333;text-transform:uppercase;margin-bottom:6px">D\u00e9tail ann\u00e9e par ann\u00e9e</p>';
+  for(var y=1;y<=5;y++){
+    yt+='<div class="yr-row"><span class="yr-l">Ann\u00e9e '+y+'</span><div class="yr-bar-wrap"></div><span class="yr-v">'+fmt(ean)+'</span></div>';
+  }
   document.getElementById('yr-table').innerHTML=yt;
 }
+
 calc();
 </script>
 </body>
