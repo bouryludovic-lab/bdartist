@@ -1,0 +1,664 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #B8963E;
+    --gold-light: #D4AF68;
+    --noir: #0A0A0A;
+    --creme: #F7F3EC;
+  }
+  body { font-family: var(--font-sans); background: transparent; color: var(--color-text-primary); }
+
+  .page { width: 100%; margin-bottom: 2px; position: relative; }
+
+  /* PAGE 1 — COVER */
+  .cover {
+    background: #0A0A0A;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    border-top: 3px solid #B8963E;
+    border-bottom: 3px solid #B8963E;
+  }
+  .cover-logo { width: 110px; height: 110px; margin-bottom: 1.5rem; }
+  .cover-divider {
+    display: flex; align-items: center; gap: 16px; width: 100%; max-width: 480px; margin: 1rem 0;
+  }
+  .cover-divider-line { flex: 1; height: 0.5px; background: #B8963E; opacity: 0.6; }
+  .cover-diamond { width: 6px; height: 6px; background: #B8963E; transform: rotate(45deg); flex-shrink: 0; }
+  .cover h1 {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .cover-sub {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #B8963E;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+  .cover-tagline {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+  .cover-byline {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #B8963E;
+    text-align: center;
+    margin-top: 2rem;
+    text-transform: uppercase;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    background: #0A0A0A;
+    padding: 1.25rem 2rem 1rem;
+    border-top: 3px solid #B8963E;
+  }
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #B8963E;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  /* PAGE 2 — ABOUT */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 420px;
+  }
+  .about-left {
+    background: #0A0A0A;
+    padding: 2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .about-logo { width: 60px; height: 60px; margin-bottom: 0.25rem; }
+  .about-name-fr { font-family: var(--font-serif); font-size: 18px; color: #fff; font-weight: 400; }
+  .about-name-last { font-size: 20px; font-weight: 500; color: #B8963E; letter-spacing: 2px; }
+  .about-divider { width: 80%; height: 0.5px; background: #B8963E; opacity: 0.5; }
+  .about-photo {
+    width: 110px; height: 130px; object-fit: cover; object-position: center top;
+    border: 1px solid #B8963E; opacity: 0.9;
+  }
+  .about-photo-placeholder {
+    width: 110px; height: 130px; background: #1a1a1a; border: 1px solid #B8963E;
+    display: flex; align-items: center; justify-content: center;
+    color: #B8963E; font-size: 11px; text-align: center; padding: 8px;
+  }
+  .about-bio {
+    font-size: 10px;
+    color: #999;
+    line-height: 1.7;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 0.5rem; }
+  .tag {
+    font-size: 9px;
+    color: #B8963E;
+    border: 0.5px solid rgba(184,150,62,0.4);
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .about-right {
+    background: var(--color-background-primary);
+    padding: 2rem 1.75rem;
+  }
+  .section-eyebrow-dark {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #B8963E;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .about-right h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .gold-accent-line { width: 36px; height: 2px; background: #B8963E; margin-bottom: 1rem; }
+  .about-story { font-size: 13px; color: var(--color-text-secondary); line-height: 1.75; margin-bottom: 1.25rem; }
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.25rem;
+  }
+  .stat-card {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem 1rem;
+  }
+  .stat-num { font-size: 22px; font-weight: 500; color: #B8963E; }
+  .stat-label { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+  .quote-block {
+    border-left: 2px solid #B8963E;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-top: 1rem;
+  }
+  .quote-text {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-text-primary);
+    line-height: 1.5;
+  }
+  .quote-author { font-size: 11px; color: var(--color-text-secondary); margin-top: 0.4rem; }
+
+  /* PAGE 3 — LEASING PRINCIPLE */
+  .content-section {
+    background: var(--color-background-primary);
+    padding: 2rem;
+  }
+  .intro-text { font-size: 13px; color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+  .step-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-num {
+    font-size: 42px;
+    font-weight: 500;
+    color: #B8963E;
+    opacity: 0.15;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    line-height: 1;
+  }
+  .step-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.5rem; }
+  .step-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.65; }
+
+  .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .benefit-card {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 1rem 1rem 1rem 1.25rem;
+    border-left: 2.5px solid #B8963E;
+  }
+  .benefit-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.3rem; }
+  .benefit-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  /* PAGE 4 — FISCALITE */
+  .legal-box {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1.5rem;
+    border: 0.5px solid var(--color-border-tertiary);
+    margin-bottom: 1.5rem;
+  }
+  .legal-box h4 { font-size: 14px; font-weight: 500; color: #B8963E; margin-bottom: 0.75rem; }
+  .legal-box p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.75; }
+  .conditions-list { list-style: none; margin-bottom: 1.5rem; }
+  .conditions-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 12px; color: var(--color-text-secondary); padding: 6px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    line-height: 1.5;
+  }
+  .check { color: #B8963E; font-weight: 500; flex-shrink: 0; font-size: 13px; }
+
+  /* PAGE 5 — SIMULATEUR */
+  .simulator-section {
+    background: var(--color-background-primary);
+    padding: 2rem;
+  }
+  .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .sim-inputs { display: flex; flex-direction: column; gap: 1rem; }
+  .sim-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; display: block; }
+  .sim-input-row { display: flex; align-items: center; gap: 8px; }
+  .sim-input-row input[type=range] { flex: 1; }
+  .sim-value { font-size: 13px; font-weight: 500; color: var(--color-text-primary); min-width: 90px; text-align: right; }
+  .sim-results {
+    background: #0A0A0A;
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .sim-results-title { font-size: 11px; letter-spacing: 2px; color: #B8963E; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .result-item { border-bottom: 0.5px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; }
+  .result-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .result-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+  .result-value { font-size: 18px; font-weight: 500; color: #fff; }
+  .result-value.gold { color: #B8963E; font-size: 22px; }
+  .result-note { font-size: 10px; color: #666; margin-top: 2px; }
+
+  .fiscal-bar { height: 8px; background: rgba(184,150,62,0.2); border-radius: 4px; margin-top: 4px; }
+  .fiscal-bar-fill { height: 8px; background: #B8963E; border-radius: 4px; transition: width 0.4s ease; }
+
+  .year-breakdown { margin-top: 1rem; }
+  .year-row {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: #777; padding: 3px 0;
+  }
+  .year-row .yr { color: #555; min-width: 40px; }
+  .year-row .yv { color: #B8963E; font-weight: 500; }
+
+  /* PAGE 6 — CTA */
+  .cta-section {
+    background: #0A0A0A;
+    padding: 2.5rem 2rem;
+    border-bottom: 3px solid #B8963E;
+  }
+  .cta-title {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .cta-sub { font-size: 12px; color: #888; text-align: center; margin-bottom: 2rem; }
+  .cta-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
+  .cta-card {
+    background: #151515;
+    border: 0.5px solid rgba(184,150,62,0.3);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1rem;
+  }
+  .cta-action { font-size: 15px; font-weight: 500; color: #B8963E; margin-bottom: 0.25rem; }
+  .cta-what { font-size: 11px; color: #ccc; margin-bottom: 0.5rem; }
+  .cta-desc { font-size: 10px; color: #666; line-height: 1.6; }
+  .urgency-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .urgency-item { font-size: 12px; color: #aaa; text-align: center; }
+  .contact-info { text-align: center; }
+  .contact-name { font-size: 12px; letter-spacing: 2px; color: #B8963E; text-transform: uppercase; }
+  .contact-detail { font-size: 13px; color: #ccc; margin-top: 4px; }
+  .contact-sub { font-size: 11px; color: #666; margin-top: 3px; }
+  .legal-footer {
+    font-size: 10px; color: #444; text-align: center;
+    border-top: 0.5px solid #1a1a1a;
+    padding-top: 1rem;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  .nav-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: #0A0A0A;
+    border-bottom: 0.5px solid rgba(184,150,62,0.3);
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; padding: 0;
+    overflow-x: auto;
+  }
+  .nav-item {
+    font-size: 10px; letter-spacing: 1.5px; color: #888;
+    padding: 10px 16px; cursor: pointer; white-space: nowrap;
+    text-transform: uppercase; border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    background: none; border-left: none; border-right: none; border-top: none;
+  }
+  .nav-item:hover, .nav-item.active { color: #B8963E; border-bottom-color: #B8963E; }
+
+  .divider-gold { height: 0.5px; background: linear-gradient(to right, transparent, #B8963E, transparent); margin: 0; }
+
+  @media (max-width: 520px) {
+    .about-layout { grid-template-columns: 1fr; }
+    .about-left { flex-direction: row; flex-wrap: wrap; padding: 1.25rem; }
+    .steps-grid, .cta-grid { grid-template-columns: 1fr; }
+    .sim-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<nav class="nav-bar">
+  <button class="nav-item active" onclick="scrollToSection('cover')">Accueil</button>
+  <button class="nav-item" onclick="scrollToSection('about')">BD Artist</button>
+  <button class="nav-item" onclick="scrollToSection('leasing')">Le Leasing</button>
+  <button class="nav-item" onclick="scrollToSection('fiscalite')">Fiscalité</button>
+  <button class="nav-item" onclick="scrollToSection('simulateur')">Simulateur</button>
+  <button class="nav-item" onclick="scrollToSection('contact')">Contact</button>
+</nav>
+
+<!-- PAGE 1 — COVER -->
+<div class="page cover" id="cover">
+  <img class="cover-logo" src="/mnt/user-data/uploads/2__1_.png" alt="BD Artist logo" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block'" />
+  <div id="logo-fallback" style="display:none; width:110px; height:110px; margin-bottom:1.5rem; display:none; align-items:center; justify-content:center;">
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <text x="50" y="55" text-anchor="middle" font-size="48" fill="#B8963E" font-style="italic">BD</text>
+      <text x="50" y="72" text-anchor="middle" font-size="11" fill="#B8963E" letter-spacing="4">ARTIST</text>
+    </svg>
+  </div>
+  <div class="cover-divider"><div class="cover-divider-line"></div><div class="cover-diamond"></div><div class="cover-divider-line"></div></div>
+  <h1>Le Leasing d'Art</h1>
+  <p class="cover-sub">Une opportunité financière exceptionnelle</p>
+  <div class="cover-divider"><div class="cover-divider-line"></div><div class="cover-diamond"></div><div class="cover-divider-line"></div></div>
+  <p class="cover-tagline">Valorisez votre entreprise · Réduisez votre fiscalité · Sublimez vos espaces</p>
+  <p class="cover-byline">BD Artist · Sculpteur Français</p>
+</div>
+<div class="divider-gold"></div>
+
+<!-- PAGE 2 — ABOUT -->
+<div class="page" id="about">
+  <div class="section-header">
+    <p class="section-eyebrow">Notre histoire</p>
+    <h2>BD Artist</h2>
+  </div>
+  <div class="about-layout">
+    <div class="about-left">
+      <img class="about-logo" src="/mnt/user-data/uploads/2__1_.png" alt="BD Artist" onerror="this.style.display='none'" />
+      <p class="about-name-fr">Benjamin</p>
+      <p class="about-name-last">DUCLOS</p>
+      <div class="about-divider"></div>
+      <img class="about-photo" src="/mnt/user-data/uploads/1776435634408_image.png" alt="Benjamin Duclos" onerror="this.style.display='none'" />
+      <p class="about-bio">Artiste sculpteur, 29 ans. Dirige une métallerie depuis 21 ans. Sculptures de prestige en matériaux nobles.</p>
+      <div class="about-tags">
+        <span class="tag">Sculpture</span>
+        <span class="tag">Acier</span>
+        <span class="tag">Prestige</span>
+        <span class="tag">France</span>
+      </div>
+    </div>
+    <div class="about-right">
+      <p class="section-eyebrow-dark">Qui sommes-nous</p>
+      <h3>Une vision artistique<br>hors du commun.</h3>
+      <div class="gold-accent-line"></div>
+      <p class="about-story">BD Artist, c'est l'histoire d'un homme qui a toujours eu deux amours : l'art et le métal. Benjamin Duclos transforme la matière brute en œuvres vivantes, chaque pièce portant l'empreinte d'une âme et d'un geste unique.</p>
+      <p class="about-story">Installé en France, ses sculptures ornent aujourd'hui des espaces prestigieux — sièges sociaux, hôtels de luxe, résidences privées — apportant une signature visuelle forte et une plus-value immédiate à chaque environnement. Chaque création est une édition limitée, pensée pour durer et prendre de la valeur avec le temps.</p>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-num">2020</div><div class="stat-label">Lancement BD Artist</div></div>
+        <div class="stat-card"><div class="stat-num">+50</div><div class="stat-label">Œuvres créées</div></div>
+        <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Fait main en France</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Matériaux nobles</div></div>
+      </div>
+      <div class="quote-block">
+        <p class="quote-text">"L'acier n'est pas froid. Entre mes mains, il respire, il raconte. Chaque sculpture est une conversation entre la matière et l'émotion."</p>
+        <p class="quote-author">— Benjamin Duclos</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider-gold"></div>
+
+<!-- PAGE 3 — LEASING -->
+<div class="page" id="leasing">
+  <div class="section-header">
+    <p class="section-eyebrow">Financement</p>
+    <h2>Qu'est-ce que le Leasing d'Art ?</h2>
+  </div>
+  <div class="content-section">
+    <p class="intro-text">Le Leasing d'Art est un dispositif de financement permettant aux entreprises d'accéder à des œuvres d'art originales sans mobiliser immédiatement leur trésorerie. Conçu à l'intersection de l'art et de la finance, il constitue une solution doublement avantageuse : culturelle et fiscale. Basé sur un contrat de location avec option d'achat, il s'étale sur 13 à 60 mois.</p>
+
+    <p class="section-eyebrow-dark" style="margin-bottom:0.75rem;">Comment ça fonctionne</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-num">01</span>
+        <p class="step-title">Vous choisissez</p>
+        <p class="step-desc">Sélectionnez une sculpture BD Artist qui correspond à votre espace et à votre sensibilité artistique. Chaque pièce est unique ou en édition très limitée.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">02</span>
+        <p class="step-title">Vous louez</p>
+        <p class="step-desc">Un contrat de location est établi via notre partenaire Art In Move, sur une durée de 13 à 60 mois. Vos mensualités sont déductibles à 100% de votre résultat imposable.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">03</span>
+        <p class="step-title">Vous acquisez</p>
+        <p class="step-desc">En fin de contrat, vous levez l'option d'achat pour une valeur résiduelle symbolique. L'œuvre vous appartient définitivement, à un coût total bien inférieur au prix marché.</p>
+      </div>
+    </div>
+
+    <p class="section-eyebrow-dark" style="margin-bottom:0.75rem; margin-top:1.5rem;">Les 5 avantages clés</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <p class="benefit-title">Déduction fiscale à 100%</p>
+        <p class="benefit-desc">Toutes vos mensualités sont déductibles du résultat imposable. Un avantage fiscal direct et immédiat dès le premier mois.</p>
+      </div>
+      <div class="benefit-card">
+        <p class="benefit-title">Capacité d'emprunt préservée</p>
+        <p class="benefit-desc">Le leasing est une charge locative : il ne figure pas à l'actif du bilan et ne réduit pas votre capacité d'emprunt bancaire.</p>
+      </div>
+      <div class="benefit-card">
+        <p class="benefit-title">Propriété conservée</p>
+        <p class="benefit-desc">L'œuvre est dissociée de l'actif du bilan, permettant d'en conserver la propriété même en cas de cession ou restructuration.</p>
+      </div>
+      <div class="benefit-card">
+        <p class="benefit-title">Étalement sur 13 à 60 mois</p>
+        <p class="benefit-desc">Choisissez la durée adaptée à votre trésorerie. Une flexibilité totale pour optimiser votre budget sans effort de trésorerie.</p>
+      </div>
+      <div class="benefit-card" style="grid-column: 1 / -1;">
+        <p class="benefit-title">Acquisition à faible coût résiduel</p>
+        <p class="benefit-desc">À l'issue du contrat, la valeur résiduelle est minimale. Vous devenez propriétaire d'une œuvre de valeur pour un montant symbolique, après avoir bénéficié de toutes les déductions fiscales.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider-gold"></div>
+
+<!-- PAGE 4 — FISCALITE -->
+<div class="page" id="fiscalite">
+  <div class="section-header">
+    <p class="section-eyebrow">Optimisation</p>
+    <h2>Réduction d'impôt & cadre légal</h2>
+  </div>
+  <div class="content-section">
+    <div class="legal-box">
+      <h4>Le cadre légal — Article 238 bis AB du CGI</h4>
+      <p>Toute entreprise assujettie à l'IS ou à l'IR qui acquiert une œuvre d'art originale d'un <strong style="color:var(--color-text-primary)">artiste vivant</strong> peut déduire le prix d'acquisition de son résultat imposable, dans la limite de <strong style="color:var(--color-text-primary)">20 000 € ou 5‰ du chiffre d'affaires HT</strong> (le montant le plus élevé étant retenu). La déduction s'étale sur <strong style="color:var(--color-text-primary)">5 exercices consécutifs</strong> à parts égales. Dispositif valable pour les acquisitions avant le 31 décembre 2025.</p>
+    </div>
+
+    <p class="section-eyebrow-dark" style="margin-bottom:0.75rem;">Conditions d'éligibilité</p>
+    <ul class="conditions-list">
+      <li><span class="check">✓</span>L'artiste doit être en vie au moment de l'acquisition de l'œuvre</li>
+      <li><span class="check">✓</span>L'œuvre doit être exposée dans un lieu accessible au public ou aux salariés de l'entreprise</li>
+      <li><span class="check">✓</span>L'achat doit intervenir avant le 31 décembre de l'année fiscale concernée</li>
+      <li><span class="check">✓</span>L'œuvre doit être inscrite dans un registre spécial tenu par l'entreprise</li>
+      <li><span class="check">✓</span>La déduction est répartie sur 5 exercices comptables successifs à parts égales</li>
+      <li><span class="check">✓</span>L'œuvre doit être une création originale (pas une reproduction)</li>
+    </ul>
+
+    <p class="section-eyebrow-dark" style="margin-bottom:0.75rem;">Notre partenaire leasing</p>
+    <div style="background:var(--color-background-secondary); border-radius:var(--border-radius-lg); padding:1rem 1.25rem; border:0.5px solid var(--color-border-tertiary); display:flex; align-items:center; gap:1rem;">
+      <div style="width:48px; height:48px; background:#B8963E; border-radius:var(--border-radius-md); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="12,2 22,19 2,19" fill="white" stroke="white" stroke-width="1"/></svg>
+      </div>
+      <div>
+        <p style="font-size:14px; font-weight:500; color:var(--color-text-primary);">Art In Move</p>
+        <p style="font-size:11px; color:var(--color-text-secondary); margin-top:2px;">Spécialiste du leasing d'œuvres d'art — Accompagnement complet du dossier, montage financier, suivi administratif.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider-gold"></div>
+
+<!-- PAGE 5 — SIMULATEUR -->
+<div class="page" id="simulateur">
+  <div class="section-header">
+    <p class="section-eyebrow">Outil interactif</p>
+    <h2>Simulateur d'avantage fiscal</h2>
+  </div>
+  <div class="simulator-section">
+    <p class="intro-text" style="margin-bottom:1.5rem;">Calculez en temps réel votre économie d'impôt selon l'article 238 bis AB du CGI. Ajustez les paramètres pour simuler votre situation.</p>
+    <div class="sim-grid">
+      <div class="sim-inputs">
+        <div>
+          <label class="sim-label">Chiffre d'affaires annuel HT</label>
+          <div class="sim-input-row">
+            <input type="range" id="ca" min="100000" max="50000000" value="2000000" step="50000" oninput="updateSim()" />
+            <span class="sim-value" id="ca-val">2 000 000 €</span>
+          </div>
+        </div>
+        <div>
+          <label class="sim-label">Valeur de l'œuvre souhaitée</label>
+          <div class="sim-input-row">
+            <input type="range" id="oeuvre" min="5000" max="200000" value="30000" step="1000" oninput="updateSim()" />
+            <span class="sim-value" id="oeuvre-val">30 000 €</span>
+          </div>
+        </div>
+        <div>
+          <label class="sim-label">Taux d'imposition (IS)</label>
+          <div class="sim-input-row">
+            <input type="range" id="taux" min="15" max="33" value="25" step="1" oninput="updateSim()" />
+            <span class="sim-value" id="taux-val">25%</span>
+          </div>
+        </div>
+        <div>
+          <label class="sim-label">Durée du leasing</label>
+          <div class="sim-input-row">
+            <input type="range" id="duree" min="13" max="60" value="36" step="1" oninput="updateSim()" />
+            <span class="sim-value" id="duree-val">36 mois</span>
+          </div>
+        </div>
+        <div id="eligibility-note" style="font-size:11px; padding:0.75rem 1rem; border-radius:var(--border-radius-md); margin-top:0.25rem;"></div>
+      </div>
+      <div class="sim-results">
+        <p class="sim-results-title">Votre simulation</p>
+        <div class="result-item">
+          <p class="result-label">Plafond de déduction annuel</p>
+          <p class="result-value gold" id="r-plafond">—</p>
+          <p class="result-note" id="r-plafond-note"></p>
+        </div>
+        <div class="result-item">
+          <p class="result-label">Montant déductible / an</p>
+          <p class="result-value" id="r-deduct-an">—</p>
+        </div>
+        <div class="result-item">
+          <p class="result-label">Économie d'impôt / an</p>
+          <p class="result-value gold" id="r-eco-an">—</p>
+        </div>
+        <div class="result-item">
+          <p class="result-label">Économie d'impôt totale sur 5 ans</p>
+          <p class="result-value gold" id="r-eco-total">—</p>
+          <div class="fiscal-bar"><div class="fiscal-bar-fill" id="eco-bar" style="width:0%"></div></div>
+        </div>
+        <div class="result-item">
+          <p class="result-label">Coût réel de l'œuvre après déduction</p>
+          <p class="result-value" id="r-cout-reel">—</p>
+          <p class="result-note" id="r-mensualite"></p>
+        </div>
+        <div class="year-breakdown" id="year-breakdown"></div>
+      </div>
+    </div>
+    <p style="font-size:10px; color:var(--color-text-secondary); margin-top:1.25rem;">* Simulation à titre indicatif. Les montants réels dépendent de votre situation fiscale. Consultez votre expert-comptable.</p>
+  </div>
+</div>
+<div class="divider-gold"></div>
+
+<!-- PAGE 6 — CTA -->
+<div class="page cta-section" id="contact">
+  <p class="cta-title">Prêt à franchir le pas ?</p>
+  <p class="cta-sub">Investissez dans l'art. Optimisez votre fiscalité. Embellissez vos espaces.</p>
+  <div class="cta-grid">
+    <div class="cta-card">
+      <p class="cta-action">Découvrir</p>
+      <p class="cta-what">les œuvres disponibles</p>
+      <p class="cta-desc">Parcourez notre catalogue exclusif de sculptures en acier et matériaux nobles, toutes en édition limitée.</p>
+    </div>
+    <div class="cta-card">
+      <p class="cta-action">Contacter</p>
+      <p class="cta-what">Benjamin Duclos</p>
+      <p class="cta-desc">Un rendez-vous personnalisé pour trouver l'œuvre qui correspond à votre projet et votre espace.</p>
+    </div>
+    <div class="cta-card">
+      <p class="cta-action">Simuler</p>
+      <p class="cta-what">votre avantage fiscal</p>
+      <p class="cta-desc">Utilisez notre simulateur ci-dessus pour calculer votre économie d'impôt personnalisée.</p>
+    </div>
+  </div>
+  <div class="urgency-list">
+    <p class="urgency-item">• Le dispositif article 238 bis AB est conditionné à des acquisitions avant le 31 décembre — chaque exercice compte</p>
+    <p class="urgency-item">• Les éditions BD Artist sont limitées et numérotées — disponibilité non garantie</p>
+    <p class="urgency-item">• Chaque année sans leasing est une opportunité fiscale manquée</p>
+  </div>
+  <div style="height:0.5px; background:rgba(184,150,62,0.3); margin:0 auto 1.5rem; width:40%;"></div>
+  <div class="contact-info">
+    <p class="contact-name">BD Artist</p>
+    <p class="contact-detail">www.benjaminduclos.com</p>
+    <p class="contact-detail">contact@benjaminduclos.com</p>
+    <p class="contact-sub">France · Disponible pour déplacements</p>
+  </div>
+  <p class="legal-footer">Document non contractuel, à titre informatif uniquement. Consultez votre expert-comptable ou conseiller fiscal pour une analyse personnalisée de votre situation.<br>Art In Move — Partenaire Leasing d'Art · BD Artist © 2024 — Tous droits réservés</p>
+</div>
+
+<script>
+function fmt(n) { return Math.round(n).toLocaleString('fr-FR') + ' €'; }
+
+function updateSim() {
+  const ca = +document.getElementById('ca').value;
+  const oeuvre = +document.getElementById('oeuvre').value;
+  const taux = +document.getElementById('taux').value / 100;
+  const duree = +document.getElementById('duree').value;
+
+  document.getElementById('ca-val').textContent = Math.round(ca).toLocaleString('fr-FR') + ' €';
+  document.getElementById('oeuvre-val').textContent = Math.round(oeuvre).toLocaleString('fr-FR') + ' €';
+  document.getElementById('taux-val').textContent = Math.round(+document.getElementById('taux').value) + '%';
+  document.getElementById('duree-val').textContent = Math.round(duree) + ' mois';
+
+  const plafond5pm = ca * 0.005;
+  const plafondFixe = 20000;
+  const plafond = Math.max(plafond5pm, plafondFixe);
+  const plafondLabel = plafond5pm >= plafondFixe ? '5‰ du CA' : 'plafond fixe légal';
+
+  const deductTotal = Math.min(oeuvre, plafond * 5);
+  const deductAn = deductTotal / 5;
+  const ecoAn = deductAn * taux;
+  const ecoTotal = ecoAn * 5;
+  const pourcentEco = Math.min((ecoTotal / oeuvre) * 100, 100);
+  const coutReel = oeuvre - ecoTotal;
+  const mensualite = oeuvre / duree;
+
+  const eligible = oeuvre > 0 && ca > 0;
+  const note = document.getElementById('eligibility-note');
+  if (oeuvre > plafond * 5) {
+    note.style.background = 'var(--color-background-warning)';
+    note.style.color = 'var(--color-text-warning)';
+    note.textContent = 'Note : la valeur de l\'œuvre dépasse le plafond déductible total (' + fmt(plafond * 5) + '). Seule cette fraction sera déduite.';
+  } else {
+    note.style.background = 'var(--color-background-success)';
+    note.style.color = 'var(--color-text-success)';
+    note.textContent = 'Éligible — L\'intégralité de l\'œuvre est déductible sur 5 ans.';
+  }
+
+  document.getElementById('r-plafond').textContent = fmt(plafond) + '/an';
+  document.getElementById('r-plafond-note').textContent = 'Calculé selon ' + plafondLabel + ' (' + fmt(plafond5pm) + ' vs 20 000 €)';
+  document.getElementById('r-deduct-an').textContent = fmt(deductAn);
+  document.getElementById('r-eco-an').textContent = fmt(ecoAn);
+  document.getElementById('r-eco-total').textContent = fmt(ecoTotal);
+  document.getElementById('eco-bar').style.width = Math.round(pourcentEco) + '%';
+  document.getElementById('r-cout-reel').textContent = fmt(coutReel);
+  document.getElementById('r-mensualite').textContent = 'Mensualité leasing estimée : ' + fmt(mensualite) + '/mois sur ' + Math.round(duree) + ' mois';
+
+  let breakdown = '<p style="font-size:10px; color:#666; margin-bottom:6px; letter-spacing:1px; text-transform:uppercase;">Détail année par année</p>';
+  for (let y = 1; y <= 5; y++) {
+    breakdown += `<div class="year-row"><span class="yr">Année ${y}</span><div style="flex:1; height:4px; background:rgba(255,255,255,0.06); border-radius:2px; margin:0 10px;"><div style="height:4px; background:#B8963E; border-radius:2px; width:${Math.round(100/5)}%; opacity:${0.4 + y*0.12}"></div></div><span class="yv">${fmt(ecoAn)}</span></div>`;
+  }
+  document.getElementById('year-breakdown').innerHTML = breakdown;
+}
+
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+}
+
+updateSim();
+</script>
